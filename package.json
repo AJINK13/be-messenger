@@ -1,0 +1,24 @@
+{
+  "name": "be-messenger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.20.2",
+    "pg": "^7.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "setup-dbs": "psql -f ./db/setup.sql",
+    "seed": "knex seed:run",
+    "migrate-make": "knex migrate:make",
+    "migrate-latest": "knex migrate-latest",
+    "migrate-rollback": "knex migrate-rollback",
+    "start": "node listen.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

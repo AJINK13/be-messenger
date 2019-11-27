@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS messenger;
+
+CREATE DATABASE messenger;
