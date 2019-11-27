@@ -36,8 +36,7 @@
       "description": "adds a user object to the database with contents dependent on the request body sent",
       "exampleRequestBody": {
         "username": "jenkins1",
-        "avatar_url": "www.not-a-website.com/not-an-img.jpg",
-        "online_status": true
+        "avatar_url": "www.not-a-website.com/not-an-img.jpg"
       }
     },
     "PATCH /api/users/:user_id": {
