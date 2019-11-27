@@ -5,17 +5,43 @@ const app = require("../app.js")
 const connection = require("../db/connection.js")
 
 describe("/api", () => {
-    after(() => {
-        connection.destroy()
-    })
-    beforeEach(() => {
-        return connection.seed.run()
-    })
-    describe("/users", () => {
-        it("GET return status 200 and all users data", () => {
-            return request(app).get("/api/users").expect(200).then(response => {
-                expect(response.body.users).to.have.length(4)
-            })
+  after(() => {
+    connection.destroy()
+  })
+  beforeEach(() => {
+    return connection.seed.run()
+  })
+  describe("/users", () => {
+    it("GET return status 200 and all users data", () => {
+      return request(app)
+        .get("/api/users")
+        .expect(200)
+        .then(response => {
+          expect(response.body.users).to.have.length(4)
         })
     })
+    describe("/users/user_id", () => {
+      it("GET returns status 200 and a single user object", () => {
+        return request(app)
+          .get("/api/users/1")
+          .expect(200)
+          .then(response => {
+            expect(response.body.user).to.be.an("object")
+          })
+      })
+      it("PATCH returns status 200 and a single user object with an updated username", () => {
+        return request(app)
+          .patch("/api/users/1")
+          .send({
+            username: "aj",
+            avatar_url: "www.hello.com",
+            online_status: true
+          })
+          .expect(200)
+          .then(response => {
+            expect(response.body).to.be.an("object")
+          })
+      })
+    })
+  })
 })

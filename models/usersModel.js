@@ -10,4 +10,14 @@ const fetchUserByUserID = user_id => {
     .where("user_id", user_id)
 }
 
-module.exports = { fetchUsers, fetchUserByUserID }
+const updateUserByUserID = (user_id, patchUser) => {
+  return connection("users")
+    .first("*")
+    .where("user_id", user_id)
+    .update("username", patchUser.username)
+    .update("avatar_url", patchUser.avatar_url)
+    .update("online_status", patchUser.online_status)
+    .returning("*")
+}
+
+module.exports = { fetchUsers, fetchUserByUserID, updateUserByUserID }
