@@ -1,4 +1,4 @@
-const { userData } = require("../data/testdata/users.js")
+const userData = require("../data/testdata/users.js")
 
 exports.seed = function(knex) {
   return knex.migrate
