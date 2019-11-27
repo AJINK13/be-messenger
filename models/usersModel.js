@@ -4,6 +4,18 @@ const fetchUsers = () => {
   return connection.select("*").from("users")
 }
 
+const addUser = infoUser => {
+  const newUser = {
+    username: infoUser.username,
+    avatar_url: infoUser.avatar_url,
+    online_status: false
+  }
+  return connection
+    .insert(newUser)
+    .into("users")
+    .returning("*")
+}
+
 const fetchUserByUserID = user_id => {
   return connection("users")
     .first("*")
@@ -20,4 +32,4 @@ const updateUserByUserID = (user_id, patchUser) => {
     .returning("*")
 }
 
-module.exports = { fetchUsers, fetchUserByUserID, updateUserByUserID }
+module.exports = { fetchUsers, addUser, fetchUserByUserID, updateUserByUserID }

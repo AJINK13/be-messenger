@@ -1,55 +1,60 @@
 {
-  "GET /api": {
-    "description": "serves up a json representation of all the available endpoints of the api"
-  },
-  "GET /api/users": {
-    "description": "serves an array of all users",
-    "exampleResponse": {
-      "users": [
-        {
+    "GET /api": {
+      "description": "serves up a json representation of all the available endpoints of the api"
+    },
+    "GET /api/users": {
+      "description": "serves an array of all users",
+      "exampleResponse": {
+        "users": [
+          {
+            "user_id": 1,
+            "username": "lurker",
+            "avatar_url": "www.not-a-website.com/not-an-img.jpg",
+            "online_status": false
+          },
+          {
+            "user_id": 2,
+            "username": "Abc123",
+            "avatar_url": "www.not-a-website.com/not-an-img.jpg",
+            "online_status": false
+          }
+        ]
+      }
+    },
+    "GET /api/users/:user_id": {
+      "description": "serves an object with the users' information",
+      "exampleResponse": {
+        "user": {
           "user_id": 1,
           "username": "lurker",
           "avatar_url": "www.not-a-website.com/not-an-img.jpg",
           "online_status": false
-        },
-        {
-          "user_id": 2,
-          "username": "Abc123",
-          "avatar_url": "www.not-a-website.com/not-an-img.jpg",
-          "online_status": false
         }
-      ]
-    }
-  },
-  "GET /api/users/:user_id": {
-    "description": "serves an object with the users' information",
-    "exampleResponse": {
-      "user": {
-        "user_id": 1,
-        "username": "lurker",
-        "avatar_url": "www.not-a-website.com/not-an-img.jpg",
-        "online_status": false
       }
-    }
-  },
-  "POST /api/users": {
-    "description": "adds a user object to the database with contents dependent on the request body sent",
-    "exampleRequestBody": {
-      "username": "jenkins1",
-      "avatar_url": "www.not-a-website.com/not-an-img.jpg",
-      "online_status": true
-    }
-  },
-  "PATCH /api/users/:user_id": {
-    "description": "serves an updated user object with the username key replaced by the string specified in the request body",
-    "exampleRequestBody": { "updateUsername": "newUser" },
-    "exampleResponse": {
-      "user": {
-        "user_id": 1,
+    },
+    "POST /api/users": {
+      "description": "adds a user object to the database with contents dependent on the request body sent",
+      "exampleRequestBody": {
+        "username": "jenkins1",
+        "avatar_url": "www.not-a-website.com/not-an-img.jpg",
+        "online_status": true
+      }
+    },
+    "PATCH /api/users/:user_id": {
+      "description": "serves an updated user object with the username key replaced by the string specified in the request body",
+      "exampleRequestBody": {
         "username": "newUser",
         "avatar_url": "www.not-a-website.com/not-an-img.jpg",
-        "online_status": false
+        "online_status": true
+      },
+      "exampleResponse": {
+        "user": {
+          "user_id": 1,
+          "username": "newUser",
+          "avatar_url": "www.not-a-website.com/not-an-img.jpg",
+          "online_status": true
+        }
       }
     }
   }
-}
+  
