@@ -1,5 +1,6 @@
 const apiRouter = require("express").Router()
+const usersRouter = require("./usersRouter.js")
 
-apiRouter.route("/users", usersRouter)
+apiRouter.use("/users", usersRouter)
 
 module.exports = apiRouter
